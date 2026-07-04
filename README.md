@@ -1,4 +1,4 @@
-# DevOps Practice — Containerized Infrastructure (Nginx + Flask + PostgreSQL)
+# DevOps Practice - Containerized Infrastructure (Nginx + Flask + PostgreSQL)
 
 A three-service containerized infrastructure built with Docker Compose, demonstrating the Infrastructure as Code principle: the entire environment can be deployed identically on any clean server with a single `git clone` and one script execution — no manual configuration required.
 
@@ -12,8 +12,8 @@ User Request → Nginx (reverse proxy, port 80)
 
 | Service         | Port  | Role                                                        |
 |-----------------|-------|--------------------------------------------------------------|
-| Nginx           | 80    | Reverse proxy — entry point for all incoming HTTP requests   |
-| Flask App       | 5000  | Application layer — handles API requests, business logic     |
+| Nginx           | 80    | Reverse proxy - entry point for all incoming HTTP requests   |
+| Flask App       | 5000  | Application layer - handles API requests, business logic     |
 | PostgreSQL 15   | 5432  | Persistent relational database (Docker volume)                |
 
 Containers communicate over the Docker Compose network using service names as hostnames (e.g. the Flask app connects to the database via `host="postgres"`, not an IP address).
@@ -24,7 +24,7 @@ Containers communicate over the Docker Compose network using service names as ho
 - Docker Compose
 - Git
 
-No other local dependencies are needed — Python, Flask, and PostgreSQL all run inside containers.
+No other local dependencies are needed - Python, Flask, and PostgreSQL all run inside containers.
 
 ## Installation & Deployment
 
@@ -42,13 +42,13 @@ cd DevOps-practice
 sudo docker compose up -d --build
 ```
 
-All three containers (Nginx, Flask, PostgreSQL) will start automatically in the correct order — PostgreSQL first, then the Flask app, then Nginx — thanks to the `depends_on` directives in `docker-compose.yml`.
+All three containers (Nginx, Flask, PostgreSQL) will start automatically in the correct order — PostgreSQL first, then the Flask app, then Nginx - thanks to the `depends_on` directives in `docker-compose.yml`.
 
 ## API Endpoints
 
 | Endpoint     | Method | Description                                  |
 |--------------|--------|-----------------------------------------------|
-| `/`          | GET    | Health check — confirms the app is running    |
+| `/`          | GET    | Health check confirms the app is running    |
 | `/add`       | POST   | Accepts a JSON payload, saves it to PostgreSQL |
 | `/messages`  | GET    | Retrieves all stored messages from PostgreSQL  |
 
